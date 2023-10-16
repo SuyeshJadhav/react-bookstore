@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layout/Layout.js'
+import Layout from '../components/Layout/Layout.js'
 
 const About = (props) => {
   return (
@@ -9,11 +9,11 @@ const About = (props) => {
           <img
             src="/images/aboutUs.jpg"
             alt="contactus"
-            style={{ width: "80%", height: '70%', paddingTop: '70px'}}
+            style={{ width: "80%", height: '70%', paddingTop: '70px' }}
           />
         </div>
         <div className="col-md-4">
-          <h1 style={{fontFamily: 'Poppins'}}>About Us</h1>
+          <h1 style={{ fontFamily: 'Poppins' }}>About Us</h1>
           <p className="text-justify mt-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus
             officiis obcaecati esse tempore unde ratione, eveniet mollitia,

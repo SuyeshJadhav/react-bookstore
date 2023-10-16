@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layout/Layout.js';
+import Layout from '../components/Layout/Layout.js';
 import { Link } from 'react-router-dom';
 
 const PageNotFound = (props) => {

@@ -1,7 +1,20 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
+import { useAuth } from '../../context/auth';
+import {toast} from 'react-toastify';
 
 const Header = () => {
+  const [auth, setAuth] = useAuth();
+  const handleLogoutClick = () => {
+    setAuth({
+      ...auth,
+      user: null,
+      token: ""
+    })
+    localStorage.removeItem('auth');
+    toast.success('Logout Successful')
+  }
+
   return (
     <div style={{ position: 'sticky', width: '100%', top: '0', zIndex: '1', fontFamily: 'Poppins', boxShadow: '0 8px 6px -6px gray', }}>
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -34,16 +47,25 @@ const Header = () => {
 
             </ul>
             <ul className="navbar-nav ms-auto d-flex align-items-start align-items-lg-center">
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/register">
-                  <button className='btn RegBtn btn-primary border-none shadow-none' type="button">Register</button>
-                </NavLink>
-              </li>
-              <li className="nav-item">
-                <NavLink className="nav-link" to="/login">
-                  <button className='btn LogBtn btn-primary border-none shadow-none' type="button">Login</button>
-                </NavLink>
-              </li>
+              {
+                !auth.user ? (<>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/register">
+                      <button className='btn RegBtn border-none shadow-none' type="button">Register</button>
+                    </NavLink>
+                  </li>
+                  <li className="nav-item">
+                    <NavLink className="nav-link" to="/login">
+                      <button className='btn LogBtn border-none shadow-none' type="button">Login</button>
+                    </NavLink>
+                  </li></>) : (<>
+                    <li className="nav-item">
+                      <NavLink className="nav-link" to="/login">
+                        <button className='btn LogBtn border-none shadow-none' onClick={handleLogoutClick} type="button">Logout</button>
+                      </NavLink>
+                    </li>
+                  </>)
+              }
               <li className="nav-item">
                 <NavLink className="nav-link align-middle custom-link" to="/cart">Cart(0)</NavLink>
               </li>

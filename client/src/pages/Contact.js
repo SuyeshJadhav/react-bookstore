@@ -1,5 +1,5 @@
 import React from 'react'
-import Layout from '../components/layout/Layout.js';
+import Layout from '../components/Layout/Layout.js';
 
 const Contact = (props) => {
   return (
@@ -10,11 +10,11 @@ const Contact = (props) => {
             <img
               src="/images/contactUs.jpeg"
               alt="contactus"
-              style={{ width: "100%", height: '100%'}}
+              style={{ width: "100%", height: '100%' }}
             />
           </div>
           <div className="col-md-4">
-            <h1 className="bg-dark p-2 text-white text-center" style={{fontFamily: 'Poppins'}}>CONTACT US</h1>
+            <h1 className="bg-dark p-2 text-white text-center" style={{ fontFamily: 'Poppins' }}>CONTACT US</h1>
             <p className="text-justify mt-2">
               Any queries and information about our products? Feel free to call
               anytime; we're available 24/7.
