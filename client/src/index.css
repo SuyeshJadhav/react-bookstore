@@ -63,3 +63,6 @@ input[type="number"]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+.dropdown-menu{
+  min-width: 8rem;
+}

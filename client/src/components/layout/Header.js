@@ -1,7 +1,8 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { useAuth } from '../../context/auth';
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
+import '../../index.css'
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -59,15 +60,23 @@ const Header = () => {
                       <button className='btn LogBtn border-none shadow-none' type="button">Login</button>
                     </NavLink>
                   </li></>) : (<>
-                    <li className="nav-item">
-                      <NavLink className="nav-link" to="/login">
-                        <button className='btn LogBtn border-none shadow-none' onClick={handleLogoutClick} type="button">Logout</button>
-                      </NavLink>
-                    </li>
+                    <div className="dropdown mx-2">
+                      <button className="btn btn-secondary dropdown-toggle shadow-none" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        {auth?.user?.name}
+                      </button>
+                      <ul className="dropdown-menu">
+                        <li>
+                          <NavLink className="dropdown-item" to={`/dashboard/${auth?.user?.role === 1 ? 'admin' : 'user'}`}>Dashboard</NavLink>
+                        </li>
+                        <li>
+                          <NavLink className="dropdown-item" to="/login" onClick={handleLogoutClick}>Logout</NavLink>
+                        </li>
+                      </ul>
+                    </div>
                   </>)
               }
               <li className="nav-item">
-                <NavLink className="nav-link align-middle custom-link" to="/cart">Cart(0)</NavLink>
+                <NavLink className="nav-link align-middle custom-link mx-2" to="/cart">Cart(0)</NavLink>
               </li>
             </ul>
           </div>

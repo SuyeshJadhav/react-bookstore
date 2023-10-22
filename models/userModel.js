@@ -27,9 +27,6 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0,
     },
-    // verified: {
-    //     type: Boolean
-    // }
 },{timestamps: true});
 
 export default mongoose.model('users',userSchema);
