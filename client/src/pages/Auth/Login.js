@@ -35,7 +35,7 @@ const Login = () => {
     }
 
     return (
-        <Layout title='Login | BookStore'>
+        <Layout title='Login │ BookStore'>
             <div className="d-flex align-items-center justify-content-center" style={{ minHeight: "77vh", flexDirection: "column", }}><span style={{ fontFamily: 'Roboto', fontSize: '25px', fontWeight: 'bolder' }}>Login</span>
                 <form className='container mt-3 col-lg-3'>
                     <div className="mb-3">

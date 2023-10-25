@@ -42,7 +42,7 @@ const Register = () => {
     }
 
     return (
-        <Layout title='Register | BookStore'>
+        <Layout title='Register │ BookStore'>
             <div className="d-flex align-items-center justify-content-center" style={{ minHeight: "78vh", flexDirection: "column", }}><span style={{ fontFamily: 'Roboto', fontSize: '25px', fontWeight: 'bolder' }}>Register</span>
                 <form className='container mt-3 col-lg-3'>
                     <div className="mb-3">

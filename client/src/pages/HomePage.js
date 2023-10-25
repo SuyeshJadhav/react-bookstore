@@ -6,7 +6,7 @@ const HomePage = (props) => {
   const [auth] = useAuth();
 
   return (
-    <Layout>
+    <Layout title={"Home │ BookStore"}>
       <h1>HomePage</h1>
       <pre>{JSON.stringify(auth, null, 4)}</pre>
     </Layout>

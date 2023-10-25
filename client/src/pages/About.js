@@ -3,7 +3,7 @@ import Layout from '../components/Layout/Layout.js'
 
 const About = (props) => {
   return (
-    <Layout>
+    <Layout title={"About Us │ BookStore"}>
       <div className="row contactus ">
         <div className="col-md-6 d-flex justify-content-end justify-content-sm-center align-items-center">
           <img
