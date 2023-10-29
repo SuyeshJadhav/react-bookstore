@@ -20,6 +20,7 @@ const app = Express();
 app.use(cors()); 
 app.use(Express.json());
 app.use(morgan('dev'));
+app.use(cors({ origin: 'http://localhost:3000' }));
 
 //routes
 app.use('/api/v1/auth' , authRoutes);

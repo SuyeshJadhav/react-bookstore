@@ -6,7 +6,7 @@ import { useAuth } from '../../context/auth'
 const Dashboard = () => {
     const [auth] = useAuth();
     return (
-        <Layout title={'Dashboard w│ Bookstore'}>
+        <Layout title={'Dashboard │ Bookstore'}>
             <div className="constainer-fluid p-3 mx-3">
                 <div className="row">
                     <div className="col-md-3">

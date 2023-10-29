@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import { useAuth } from '../../context/auth';
 import { toast } from 'react-toastify';
 import '../../index.css'
+import SearchInput from '../Form/SearchInput';
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
@@ -24,7 +25,7 @@ const Header = () => {
             BookStore
           </Link>
           <button
-            className="navbar-toggler"
+            className="navbar-toggler border-none shadow-none"
             type="button"
             data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent"
@@ -45,7 +46,7 @@ const Header = () => {
               <li className="nav-item">
                 <NavLink className="nav-link custom-link" to="/about">About</NavLink>
               </li>
-
+              <SearchInput />
             </ul>
             <ul className="navbar-nav ms-auto d-flex align-items-start align-items-lg-center">
               {

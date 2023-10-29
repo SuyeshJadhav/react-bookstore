@@ -1,43 +1,75 @@
 /* Custom CSS for the Register page */
 .container {
-    background-color: #f5f5f5; /* Soft gray background color */
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
-  }
-  
-  .form-label {
-    color: #333; /* Dark gray label text */
-  }
-  
-  .form-control {
-    background-color: #fff; /* White input background */
-    border: 1px solid #ccc; /* Light gray border */
-    border-radius: 5px;
-    padding: 10px;
-    transition: border-color 0.3s, box-shadow 0.3s;
-  }
-  
-  .form-control:focus {
-    border-color: #6c757d; /* Dark gray border when focused */
-    box-shadow: 0 0 5px rgba(108, 117, 125, 0.5); /* Soft shadow when focused */
-  }
-  
-  .btn {
-    background-color: #545b61; /* Soft grayish-blue button color */
-    color: #fff; /* White text color */
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .btn:hover {
-    background-color: #495057; /* Darker grayish-blue on hover */
-    color: white;
-  }
+  background-color: #f5f5f5; /* Soft gray background color */
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Soft shadow effect */
+}
 
-  
-  
-  /* You can customize these colors further to match your desired pastel palette */
-  
+.form-label {
+  color: #333; /* Dark gray label text */
+}
+
+.form-control {
+  background-color: #fff; /* White input background */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 5px;
+  padding: 10px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: #6c757d; /* Dark gray border when focused */
+  box-shadow: 0 0 5px rgba(108, 117, 125, 0.5); /* Soft shadow when focused */
+}
+
+.btn {
+  background-color: #545b61; /* Soft grayish-blue button color */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #495057; /* Darker grayish-blue on hover */
+  color: white;
+}
+
+.editBtn {
+  background-color: #545b61; /* Soft grayish-blue button color */
+  color: #fff; /* White text color */
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.editBtn:hover {
+  background-color: #495057; /* Darker grayish-blue on hover */
+  color: white;
+}
+
+.delBtn:hover {
+  background-color: #9c2626; /* Darker grayish-blue on hover */
+  color: white;
+}
+
+.delBtn {
+  background-color: red;
+  color: #fff; /* White text color */
+  border: none;
+  padding: 7px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+}
+
+.modalTable {
+  margin: 10px 20px 0 0;
+}
+
+.product-link {
+  text-decoration: none !important;
+  color: black !important;
+}
