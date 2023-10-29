@@ -25,25 +25,36 @@ const Products = () => {
   }, [])
 
   return (
-    <Layout>
-      <div className="row">
-        <div className="col-md-3">
-          <AdminMenu />
-        </div>
-        <div className="col-md-9">
-          <h1 className='text-center'>All Products List</h1>
-          <div className="d-flex flex-wrap">
-            {products?.map((p) => (
-              <Link to={`/dashboard/admin/product/${p.slug}`} key={p._id} className='product-link'>
-                <div className="card m-2" style={{ width: "18rem", overflowX: "hidden" }} >
-                  <img src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`} className="card-img-top" alt={p.name} height={"200px"}/>
-                  <div className="card-body">
-                    <h5 className="card-title">{p.name}</h5>
-                    <p className="card-text">{p.description}</p>
+    <Layout title={"Products | BookStore"}>
+      <div className="container-fluid">
+        <div className="row">
+          <div className="col-md-3 mt-3">
+            <AdminMenu />
+          </div>
+          <div className="col-md-9 mt-3">
+            <h1 className='text-center'>All Products</h1>
+            <div className="grid-container">
+              {products?.map((p) => (
+                <Link to={`/dashboard/admin/product/${p.slug}`} key={p._id} className='product-link p-2'>
+                  <div className="card-container" style={{ backgroundColor: "#EEEEEE" }}>
+                    <div className="card">
+                      <img
+                        src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${p._id}`}
+                        className="card-img-top"
+                        alt={p.name}
+                        style={{ height: "250px" }}
+                      />
+                      <div className="card-body">
+                        <h5 className="card-title fw-bold">{p.name}</h5>
+                        <h6 className="card-title" style={{ color: "grey" }}>by {p.author}</h6>
+                        <p className="card-text">{p.description.substring(0, 30)}...</p>
+                        <p className="card-text mt-4 fw-bold">₹{p.price}</p>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              </Link>
-            ))}
+                </Link>
+              ))}
+            </div>
           </div>
         </div>
       </div>

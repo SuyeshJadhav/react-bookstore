@@ -33,6 +33,10 @@ const productSchema = new mongoose.Schema({
     shipping: {
         type: Boolean,
     },
+    author: {
+        type: String,
+        required: true
+    }
 }, { timestamps: true })
 
 export default mongoose.model('Products', productSchema)

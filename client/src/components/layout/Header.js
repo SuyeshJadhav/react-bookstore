@@ -4,9 +4,11 @@ import { useAuth } from '../../context/auth';
 import { toast } from 'react-toastify';
 import '../../index.css'
 import SearchInput from '../Form/SearchInput';
+import { useCart } from '../../context/cart';
 
 const Header = () => {
   const [auth, setAuth] = useAuth();
+  const [cart] = useCart();
   const handleLogoutClick = () => {
     setAuth({
       ...auth,
@@ -77,7 +79,7 @@ const Header = () => {
                   </>)
               }
               <li className="nav-item">
-                <NavLink className="nav-link align-middle custom-link mx-2" to="/cart">Cart(0)</NavLink>
+                <NavLink className="nav-link align-middle custom-link mx-2" to="/cart">Cart <span style={{color: 'yellow'}}>({cart?.length})</span></NavLink>
               </li>
             </ul>
           </div>

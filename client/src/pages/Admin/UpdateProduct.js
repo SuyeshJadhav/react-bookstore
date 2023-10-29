@@ -12,6 +12,7 @@ const UpdateProduct = () => {
     const params = useParams();
     const [categories, setCategories] = useState([]);
     const [name, setName] = useState("");
+    const [author, setAuthor] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [category, setCategory] = useState("");
@@ -27,6 +28,7 @@ const UpdateProduct = () => {
                 `${process.env.REACT_APP_API}/api/v1/product/get-product/${params.slug}`
             );
             setName(data.product.name);
+            setAuthor(data.product.author);
             setId(data.product._id);
             setDescription(data.product.description);
             setPrice(data.product.price);
@@ -65,6 +67,7 @@ const UpdateProduct = () => {
         try {
             const productData = new FormData();
             productData.append("name", name);
+            productData.append("author", author);
             productData.append("description", description);
             productData.append("price", price);
             productData.append("quantity", quantity);
@@ -101,8 +104,9 @@ const UpdateProduct = () => {
             toast.error("Something went wrong");
         }
     };
+
     return (
-        <Layout title={"Dashboard - Create Product"}>
+        <Layout title={"Dashboard | Create Product"}>
             <div className="container-fluid m-3 p-3">
                 <div className="row">
                     <div className="col-md-3">
@@ -168,6 +172,15 @@ const UpdateProduct = () => {
                                     placeholder="write a name"
                                     className="form-control"
                                     onChange={(e) => setName(e.target.value)}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <input
+                                    type="text"
+                                    value={author}
+                                    placeholder="write author name"
+                                    className="form-control"
+                                    onChange={(e) => setAuthor(e.target.value)}
                                 />
                             </div>
                             <div className="mb-3">

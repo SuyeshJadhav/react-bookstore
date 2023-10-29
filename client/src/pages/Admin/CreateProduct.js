@@ -11,6 +11,7 @@ const CreateProduct = () => {
     const navigate = useNavigate();
     const [categories, setCategories] = useState([]);
     const [name, setName] = useState("");
+    const [author, setAuthor] = useState("");
     const [description, setDescription] = useState("");
     const [price, setPrice] = useState("");
     const [category, setCategory] = useState("");
@@ -41,6 +42,7 @@ const CreateProduct = () => {
         try {
             const productData = new FormData();
             productData.append("name", name);
+            productData.append("author", author);
             productData.append("description", description);
             productData.append("price", price);
             productData.append("quantity", quantity);
@@ -64,7 +66,7 @@ const CreateProduct = () => {
 
     return (
         <Layout title={"Dashboard | Create Product"}>
-            <div className="container-fluid m-3 p-3">
+            <div className="container-fluid mt-3">
                 <div className="row">
                     <div className="col-md-3">
                         <AdminMenu />
@@ -119,6 +121,15 @@ const CreateProduct = () => {
                                     placeholder="Enter Name"
                                     className="form-control"
                                     onChange={(e) => setName(e.target.value)}
+                                />
+                            </div>
+                            <div className="mb-3">
+                                <input
+                                    type="text"
+                                    value={author}
+                                    placeholder="Enter Author Name"
+                                    className="form-control"
+                                    onChange={(e) => setAuthor(e.target.value)}
                                 />
                             </div>
                             <div className="mb-3">

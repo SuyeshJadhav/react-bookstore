@@ -87,7 +87,7 @@ const CreateCategory = () => {
     return (
 
         <Layout title={"Dashboard │ Create Category"}>
-            <div className="container-fluid p-3">
+            <div className="container-fluid mt-3">
                 <div className="row">
                     <div className="col-md-3">
                         <AdminMenu />
@@ -98,7 +98,7 @@ const CreateCategory = () => {
                             <CategoryFrom handleSubmit={handleSubmit} value={name} setValue={setName} />
                         </div>
                         <div className='w-75'>
-                            <table className="table" style={{backgroundColor: "#454545", color: "white"}}>
+                            <table className="table" style={{backgroundColor: "#545b61", color: "white"}}>
                                 <thead>
                                     <tr>
                                         <th scope="col">Name</th>

@@ -38,7 +38,7 @@
 }
 
 .editBtn {
-  background-color: #545b61; /* Soft grayish-blue button color */
+  background-color: #0d6efd;
   color: #fff; /* White text color */
   border: none;
   padding: 7px 15px;
@@ -47,12 +47,12 @@
 }
 
 .editBtn:hover {
-  background-color: #495057; /* Darker grayish-blue on hover */
+  background-color: #0a57c9; /* Darker grayish-blue on hover */
   color: white;
 }
 
 .delBtn:hover {
-  background-color: #9c2626; /* Darker grayish-blue on hover */
+  background-color: #c10202; /* Darker grayish-blue on hover */
   color: white;
 }
 
@@ -72,4 +72,38 @@
 .product-link {
   text-decoration: none !important;
   color: black !important;
+}
+
+.addToCartBtn{
+  border: 1px black solid;
+  background-color: #ffffff;
+  color: black
+}
+.addToCartBtn:hover{
+  background-color: #dddddd;
+  color: black
+}
+
+.moreDetailBtn{
+  background-color: #1c1c1c;
+}
+
+.moreDetailBtn:hover{
+  background-color: #353535;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(23rem, 1fr));
+  justify-content: center;
+}
+
+.card-container {
+  max-width: 23rem;
+  width: 100%;
+}
+
+.row {
+  max-width: calc(100vw - 20px);
+  overflow-x: hidden;
 }
