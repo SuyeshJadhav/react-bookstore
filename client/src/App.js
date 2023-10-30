@@ -15,7 +15,6 @@ import AdminRoute from './components/Routes/AdminRoute.js';
 import AdminDashboard from './pages/Admin/AdminDashboard.js';
 import CreateCategory from './pages/Admin/CreateCategory.js';
 import CreateProduct from './pages/Admin/CreateProduct.js';
-import Users from './pages/Admin/Users.js';
 import Orders from './pages/user/Orders.js';
 import Profile from './pages/user/Profile.js';
 import Search from './pages/Search.js';
@@ -24,6 +23,7 @@ import 'antd/dist/reset.css';
 import Products from './pages/Admin/Products.js';
 import UpdateProduct from './pages/Admin/UpdateProduct.js';
 import CartPage from './pages/CartPage.js';
+import AdminOrders from './pages/Admin/AdminOrders.js';
 
 export default function App() {
   return (
@@ -31,7 +31,7 @@ export default function App() {
       <AuthProvider>
         <SearchProvider>
           <CartProvider>
-            <Router>  
+            <Router>
               <Routes>
                 <Route path='/' element={<HomePage />} />
                 <Route path='/product/:slug' element={<ProductDetails />} />
@@ -47,7 +47,7 @@ export default function App() {
                   <Route path='admin/create-category' element={<CreateCategory />} />
                   <Route path='admin/create-product' element={<CreateProduct />} />
                   <Route path='admin/product/:slug' element={<UpdateProduct />} />
-                  <Route path='admin/users' element={<Users />} />
+                  <Route path='admin/orders' element={<AdminOrders />} />
                   <Route path='admin/products' element={<Products />} />
                 </Route>
                 <Route path='/about' element={<About />} />

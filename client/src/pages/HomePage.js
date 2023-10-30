@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/Layout/Layout.js';
-import { useAuth } from '../context/auth.js';
 import axios from 'axios';
 import { Checkbox } from 'antd'
 import { useNavigate } from 'react-router-dom';
@@ -17,13 +16,9 @@ const HomePage = () => {
 
   //get all category
   const getAllCategory = async () => {
-    try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/category/get-category`)
-      if (data?.success) {
-        setCategories(data?.category);
-      }
-    } catch (error) {
-      console.log(error);
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/category/get-category`)
+    if (data?.success) {
+      setCategories(data?.category);
     }
   }
 
@@ -33,12 +28,8 @@ const HomePage = () => {
 
   //get all products
   const getAllProducts = async () => {
-    try {
-      const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/get-product`);
-      setProducts(data.products);
-    } catch (error) {
-      console.log(error);
-    }
+    const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/get-product`);
+    setProducts(data.products);
   }
 
   useEffect(() => {
@@ -47,6 +38,7 @@ const HomePage = () => {
 
   useEffect(() => {
     if (checked.length) filterProduct();
+    // eslint-disable-next-line
   }, [checked.length])
 
   //filter by genre
@@ -62,12 +54,8 @@ const HomePage = () => {
 
   //get filtered products
   const filterProduct = async () => {
-    try {
-      const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/product-filters`, { checked });
-      setProducts(data?.products);
-    } catch (error) {
-      console.log(error);
-    }
+    const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/product-filters`, { checked });
+    setProducts(data?.products);
   }
 
   return (

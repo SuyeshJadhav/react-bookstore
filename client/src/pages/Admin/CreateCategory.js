@@ -26,7 +26,6 @@ const CreateCategory = () => {
                 toast.error(data.message);
             }
         } catch (error) {
-            console.log(error);
             toast.error('something went wrong in input form')
         }
     }
@@ -35,18 +34,17 @@ const CreateCategory = () => {
     const handleUpdate = async (e) => {
         e.preventDefault();
         try {
-            const {data} = await axios.put(`${process.env.REACT_APP_API}/api/v1/category/update-category/${selected._id}`, {name: updatedName})
-            if(data.success){
+            const { data } = await axios.put(`${process.env.REACT_APP_API}/api/v1/category/update-category/${selected._id}`, { name: updatedName })
+            if (data.success) {
                 toast.success(`${updatedName} is updated`)
                 setSelected(null);
                 setUpdatedName("");
                 setVisible(false);
                 getAllCategory();
-            }else{
+            } else {
                 toast.error(data.message);
             }
         } catch (error) {
-            // console.log(error);
             toast.error('Something went wrong')
         }
     }
@@ -54,15 +52,14 @@ const CreateCategory = () => {
     //handle delete
     const handleDelete = async (pid) => {
         try {
-            const {data} = await axios.delete(`${process.env.REACT_APP_API}/api/v1/category/delete-category/${pid}`)
-            if(data.success){
+            const { data } = await axios.delete(`${process.env.REACT_APP_API}/api/v1/category/delete-category/${pid}`)
+            if (data.success) {
                 toast.success(`category is deleted`)
                 getAllCategory();
-            }else{
+            } else {
                 toast.error(data.message);
             }
         } catch (error) {
-            // console.log(error);
             toast.error('Something went wrong')
         }
     }
@@ -75,7 +72,6 @@ const CreateCategory = () => {
                 setCategories(data?.category);
             }
         } catch (error) {
-            console.log(error);
             toast.error('Something went wrong in getting category')
         }
     }
@@ -98,7 +94,7 @@ const CreateCategory = () => {
                             <CategoryFrom handleSubmit={handleSubmit} value={name} setValue={setName} />
                         </div>
                         <div className='w-75'>
-                            <table className="table" style={{backgroundColor: "#545b61", color: "white"}}>
+                            <table className="table" style={{ backgroundColor: "#545b61", color: "white" }}>
                                 <thead>
                                     <tr>
                                         <th scope="col">Name</th>
@@ -109,10 +105,10 @@ const CreateCategory = () => {
                                     {categories?.map(c => (
                                         <>
                                             <tr className='tableCategory'>
-                                                <td key={c._id} style={{paddingRight: "100px"}}>{c.name}</td>
+                                                <td key={c._id} style={{ paddingRight: "100px" }}>{c.name}</td>
                                                 <td>
-                                                    <button className='btn btn-sm editBtn ms-2 shadow-none' onClick={() => {setVisible(true); setUpdatedName(c.name); setSelected(c)}}>Edit</button>
-                                                    <button className='btn btn-sm delBtn ms-2 shadow-none' onClick={() => {handleDelete(c._id)}}>Delete</button>
+                                                    <button className='btn btn-sm editBtn ms-2 shadow-none' onClick={() => { setVisible(true); setUpdatedName(c.name); setSelected(c) }}>Edit</button>
+                                                    <button className='btn btn-sm delBtn ms-2 shadow-none' onClick={() => { handleDelete(c._id) }}>Delete</button>
                                                 </td>
                                             </tr >
                                         </>
@@ -120,7 +116,7 @@ const CreateCategory = () => {
                                 </tbody>
                             </table>
                         </div>
-                        <Modal onCancel={() => setVisible(false)} footer={null} visible={visible} style={{paddingTop: "50px"}}>
+                        <Modal onCancel={() => setVisible(false)} footer={null} visible={visible} style={{ paddingTop: "50px" }}>
                             <div className='modalTable'>
                                 <CategoryFrom value={updatedName} setValue={setUpdatedName} handleSubmit={handleUpdate} />
                             </div>

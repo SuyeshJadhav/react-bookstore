@@ -1,9 +1,14 @@
 import React from 'react'
 import Layout from './../components/Layout/Layout'
 import { useSearch } from '../context/search'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
+import { useCart } from '../context/cart'
 
 const Search = () => {
-    const [values, setValues] = useSearch();
+    const [values] = useSearch();
+    const navigate = useNavigate();
+    const [cart, setCart] = useCart();
     return (
         <Layout title={'Search results'}>
             <div className="container-fluid p-4">
@@ -19,8 +24,8 @@ const Search = () => {
                                     <h6 className="card-title" style={{ color: "grey" }}>by {p.author}</h6>
                                     <p className="card-text mt-4">{p.description.substring(0, 35)}...</p>
                                     <p className="card-text mt-4 fw-bold">₹{p.price}</p>
-                                    <button className="btn btn-sm m-1 mt-1 moreDetailBtn">More Details</button>
-                                    <button className="btn btn-sm m-1 mt-1 addToCartBtn">Add to Cart</button>
+                                    <button className="btn btn-sm m-1 mt-1 moreDetailBtn" onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
+                                    <button className="btn btn-sm m-1 mt-1 addToCartBtn" onClick={() => { setCart([...cart, p]); localStorage.setItem('cart', JSON.stringify([...cart, p])); toast.success('Item added to cart'); }}>Add to Cart</button>
                                 </div>
                             </div>
                         ))}

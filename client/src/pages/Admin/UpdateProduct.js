@@ -23,22 +23,18 @@ const UpdateProduct = () => {
 
     //get single product
     const getSingleProduct = async () => {
-        try {
-            const { data } = await axios.get(
-                `${process.env.REACT_APP_API}/api/v1/product/get-product/${params.slug}`
-            );
-            setName(data.product.name);
-            setAuthor(data.product.author);
-            setId(data.product._id);
-            setDescription(data.product.description);
-            setPrice(data.product.price);
-            setPrice(data.product.price);
-            setQuantity(data.product.quantity);
-            setShipping(data.product.shipping);
-            setCategory(data.product.category._id);
-        } catch (error) {
-            console.log(error);
-        }
+        const { data } = await axios.get(
+            `${process.env.REACT_APP_API}/api/v1/product/get-product/${params.slug}`
+        );
+        setName(data.product.name);
+        setAuthor(data.product.author);
+        setId(data.product._id);
+        setDescription(data.product.description);
+        setPrice(data.product.price);
+        setPrice(data.product.price);
+        setQuantity(data.product.quantity);
+        setShipping(data.product.shipping);
+        setCategory(data.product.category._id);
     };
     useEffect(() => {
         getSingleProduct();
@@ -52,7 +48,6 @@ const UpdateProduct = () => {
                 setCategories(data?.category);
             }
         } catch (error) {
-            console.log(error);
             toast.error("Something wwent wrong in getting catgeory");
         }
     };
@@ -84,7 +79,6 @@ const UpdateProduct = () => {
                 navigate("/dashboard/admin/products");
             }
         } catch (error) {
-            console.log(error);
             toast.error("something went wrong");
         }
     };
@@ -94,13 +88,10 @@ const UpdateProduct = () => {
         try {
             let answer = window.prompt("Are You Sure want to delete this product ? ");
             if (!answer) return;
-            const { data } = await axios.delete(
-                `${process.env.REACT_APP_API}/api/v1/product/delete-product/${id}`
-            );
-            toast.success("Product DEleted Succfully");
+            await axios.delete(`${process.env.REACT_APP_API}/api/v1/product/delete-product/${id}`);
+            toast.success("Product Deleted Succfully");
             navigate("/dashboard/admin/products");
         } catch (error) {
-            console.log(error);
             toast.error("Something went wrong");
         }
     };
@@ -228,14 +219,14 @@ const UpdateProduct = () => {
                                 </Select>
                             </div>
                             <div className="mb-3">
-                                <button className="btn btn-primary mx-1" style={{padding: "7px 15px"}} onClick={handleUpdate}>
+                                <button className="btn btn-primary mx-1" style={{ padding: "7px 15px" }} onClick={handleUpdate}>
                                     UPDATE PRODUCT
                                 </button>
                                 <button className="btn delBtn btn-danger mx-1" onClick={handleDelete}>
                                     DELETE PRODUCT
                                 </button>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

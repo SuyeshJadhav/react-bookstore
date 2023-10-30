@@ -1,16 +1,16 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
 import Layout from '../components/Layout/Layout'
-import { AuthProvider, useAuth } from '../context/auth'
+import { useAuth } from '../context/auth'
 import { useCart } from '../context/cart'
 import { useNavigate } from 'react-router-dom';
 import DropIn from "braintree-web-drop-in-react";
-import {toast} from 'react-toastify'
+import { toast } from 'react-toastify'
 
 
 const CartPage = () => {
     const [cart, setCart] = useCart();
-    const [auth, setAuth] = useAuth();
+    const [auth] = useAuth();
     const navigate = useNavigate();
     const [clientToken, setClientToken] = useState("");
     const [instance, setInstance] = useState("");
@@ -19,35 +19,28 @@ const CartPage = () => {
 
     //total price
     const totalPrice = () => {
-        try {
-            let total = 0
-            cart?.map((item) => { total = total + item.price })
-            return total.toLocaleString('en-US', {
-                style: "currency",
-                currency: 'INR'
-            });
-        } catch (error) {
-            console.log(error);
-        }
+        let total = 0
+        // eslint-disable-next-line
+        cart?.map((item) => { total = total + item.price })
+        return total.toLocaleString('en-US', {
+            style: "currency",
+            currency: 'INR'
+        });
     }
     //delete item
     const removeCartItem = (pid) => {
-        try {
-            let myCart = [...cart];
-            let index = myCart.findIndex(item => item._id === pid)
-            myCart.splice(index, 1);
-            setCart(myCart);
-            localStorage.setItem('cart', JSON.stringify(myCart));
-        } catch (error) {
-            console.log(error);
-        }
+        let myCart = [...cart];
+        let index = myCart.findIndex(item => item._id === pid)
+        myCart.splice(index, 1);
+        setCart(myCart);
+        localStorage.setItem('cart', JSON.stringify(myCart));
     }
 
     const handlePayment = async () => {
         try {
             setLoading(true);
             const { nonce } = await instance.requestPaymentMethod();
-            const { data } = await axios.post(`${process.env.REACT_APP_API}/api/v1/product/braintree/payment`, {
+            await axios.post(`${process.env.REACT_APP_API}/api/v1/product/braintree/payment`, {
                 nonce,
                 cart,
             });
@@ -57,19 +50,14 @@ const CartPage = () => {
             navigate("/dashboard/user/orders");
             toast.success("Payment Completed Successfully ");
         } catch (error) {
-            console.log(error);
             setLoading(false);
         }
     };
 
     //payment token
     const getToken = async () => {
-        try {
-            const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/braintree/token`)
-            setClientToken(data?.clientToken);
-        } catch (error) {
-            console.log(error);
-        }
+        const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/braintree/token`)
+        setClientToken(data?.clientToken);
     }
 
     useEffect(() => {
@@ -77,7 +65,7 @@ const CartPage = () => {
     }, [auth?.token])
 
     return (
-        <Layout>
+        <Layout title={'Cart | BookStore'}>
             <div className="container p-4" style={{}}>
                 <div className="row">
                     <div className="col-md-12">
@@ -85,7 +73,7 @@ const CartPage = () => {
                             Hello {auth?.token && auth?.user?.name}
                         </h1>
                         <h4 className='text-center'>
-                            {cart?.length > 1 ? `You have ${cart.length} items in your cart. ${auth?.token ? "" : "Please login to Checkout. "}` : "Your cart is empty. "}
+                            {cart?.length >= 1 ? `You have ${cart.length} items in your cart. ${auth?.token ? "" : "Please login to Checkout. "}` : "Your cart is empty. "}
                         </h4>
                     </div>
                 </div>

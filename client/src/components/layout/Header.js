@@ -79,7 +79,7 @@ const Header = () => {
                   </>)
               }
               <li className="nav-item">
-                <NavLink className="nav-link align-middle custom-link mx-2" to="/cart">Cart <span style={{color: 'yellow'}}>({cart?.length})</span></NavLink>
+                <NavLink className="nav-link align-middle custom-link mx-2" to="/cart">Cart <span style={{ color: 'yellow' }}>({cart?.length})</span></NavLink>
               </li>
             </ul>
           </div>

@@ -3,7 +3,7 @@ import Layout from '../../components/Layout/Layout.js';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-// import validator from 'validator';
+import validator from 'validator';
 import '../index.css'
 
 const Register = () => {
@@ -26,14 +26,13 @@ const Register = () => {
                 else if (res && res.data.message === "Already Registered please Login") {
                     toast.success("User already registered Please Login");
                 }
-                // else if(!validator.isEmail(email)){
-                //     toast.error("Enter valid email");
-                // }
+                else if (!validator.isEmail(email)) {
+                    toast.error("Enter valid email");
+                }
                 else {
                     toast.error(res.data.message);
                 }
             } catch (error) {
-                console.log(error);
                 toast.error('Something went wrong!');
             }
         }

@@ -2,7 +2,7 @@ import { useState, useContext, createContext } from "react";
 
 const SearchContext = createContext();
 
-const SearchProvider = ({children}) => {
+const SearchProvider = ({ children }) => {
     const [search, setSearch] = useState({
         keyword: "",
         results: []
@@ -18,4 +18,4 @@ const SearchProvider = ({children}) => {
 //custom hook
 const useSearch = () => useContext(SearchContext);
 
-export {useSearch, SearchProvider}
+export { useSearch, SearchProvider }

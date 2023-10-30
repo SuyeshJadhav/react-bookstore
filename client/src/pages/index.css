@@ -74,21 +74,21 @@
   color: black !important;
 }
 
-.addToCartBtn{
+.addToCartBtn {
   border: 1px black solid;
   background-color: #ffffff;
-  color: black
+  color: black;
 }
-.addToCartBtn:hover{
+.addToCartBtn:hover {
   background-color: #dddddd;
-  color: black
+  color: black;
 }
 
-.moreDetailBtn{
+.moreDetailBtn {
   background-color: #1c1c1c;
 }
 
-.moreDetailBtn:hover{
+.moreDetailBtn:hover {
   background-color: #353535;
 }
 
@@ -108,10 +108,10 @@
   overflow-x: hidden;
 }
 
-.paymentBtn{
+.paymentBtn {
   background-color: #1c1c1c;
 }
 
-.paymentBtn:hover{
+.paymentBtn:hover {
   background-color: #353535;
 }

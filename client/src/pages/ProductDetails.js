@@ -3,7 +3,7 @@ import Layout from '../components/Layout/Layout'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import { useCart } from '../context/cart'
-import {toast} from 'react-toastify';
+import { toast } from 'react-toastify';
 
 const ProductDetails = () => {
     const params = useParams();
@@ -12,20 +12,17 @@ const ProductDetails = () => {
     //initalp detaails
     useEffect(() => {
         if (params?.slug) getProduct();
+        // eslint-disable-next-line
     }, [params?.slug])
 
     //get products
     const getProduct = async () => {
-        try {
-            const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/get-product/${params.slug}`)
-            setProduct(data?.product)
-        } catch (error) {
-            console.log(error);
-        }
+        const { data } = await axios.get(`${process.env.REACT_APP_API}/api/v1/product/get-product/${params.slug}`)
+        setProduct(data?.product)
     }
 
     return (
-        <Layout>
+        <Layout title={`${product.name} | BookStore`}>
             <div className="row container-fluid mt-4">
                 <div className="col-md-6 text-center" style={{ marginTop: "9vh" }}>
                     <img
