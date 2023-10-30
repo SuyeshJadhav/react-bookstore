@@ -2,10 +2,13 @@ import React, { useState, useEffect } from 'react'
 import Layout from '../components/Layout/Layout'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
+import { useCart } from '../context/cart'
+import {toast} from 'react-toastify';
 
 const ProductDetails = () => {
     const params = useParams();
     const [product, setProduct] = useState({})
+    const [cart, setCart] = useCart();
     //initalp detaails
     useEffect(() => {
         if (params?.slug) getProduct();
@@ -24,7 +27,7 @@ const ProductDetails = () => {
     return (
         <Layout>
             <div className="row container-fluid mt-4">
-                <div className="col-md-6 text-center" style={{marginTop: "9vh"}}>
+                <div className="col-md-6 text-center" style={{ marginTop: "9vh" }}>
                     <img
                         src={`${process.env.REACT_APP_API}/api/v1/product/product-photo/${product._id}`}
                         className="card-img-top"
@@ -39,7 +42,7 @@ const ProductDetails = () => {
                     <h5>Description: {product.description}</h5>
                     <h5>Genre: {product.category?.name}</h5>
                     <h5 className='mb-4'>Price: ₹{product.price}</h5>
-                    <button className="btn btn-sm mt-4 moreDetailBtn">Add to Cart</button>
+                    <button className="btn btn-sm mt-4 moreDetailBtn" onClick={() => { setCart([...cart, product]); localStorage.setItem('cart', JSON.stringify([...cart, product])); toast.success('Item added to cart'); }}>Add to Cart</button>
 
                 </div>
             </div>

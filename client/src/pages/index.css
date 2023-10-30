@@ -107,3 +107,11 @@
   max-width: calc(100vw - 20px);
   overflow-x: hidden;
 }
+
+.paymentBtn{
+  background-color: #1c1c1c;
+}
+
+.paymentBtn:hover{
+  background-color: #353535;
+}
