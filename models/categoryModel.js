@@ -1,12 +1,12 @@
 import mongoose from 'mongoose';
 
 const categorySchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String,
         required: true,
         unique: true,
     },
-    slug:{
+    slug: {
         type: String,
         lowercase: true
     }
