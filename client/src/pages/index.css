@@ -115,3 +115,7 @@
 .paymentBtn:hover {
   background-color: #353535;
 }
+
+.card-img-top{
+  border: 2px solid black;
+}
