@@ -27,11 +27,11 @@ const app = Express();
 app.use(cors());
 app.use(Express.json());
 app.use(morgan('dev'));
-app.use(Express.static(path.join(__dirname, './client/build')))
+app.use(Express.static(path.join(__dirname, 'client/build')))
 
 //rest api
 app.use('*', function (req, res) {
-    res.sendFile(path.join(__dirname, './client/build/index.html'))
+    res.sendFile(path.join(__dirname, 'client/build/index.html'))
 })
 
 //routes
