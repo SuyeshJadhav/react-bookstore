@@ -24,7 +24,7 @@ const __dirname = dirname(__filename);
 const app = express();
 
 // Middlewares
-app.use(cors());
+app.use(cors({ origin: 'https://wide-eyed-pantyhose-wasp.cyclic.app/' }));
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'client/build')));
