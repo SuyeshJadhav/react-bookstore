@@ -1,47 +1,46 @@
-import Express from "express";
-import dotenv from "dotenv";
-import morgan from "morgan";
-import connectDB from "./config/db.js";
-import authRoutes from "./routes/authRoute.js";
-import categoryRoutes from "./routes/categoryRoutes.js"
-import productRoutes from "./routes/productRoutes.js"
+import express from 'express';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import connectDB from './config/db.js';
+import authRoutes from './routes/authRoute.js';
+import categoryRoutes from './routes/categoryRoutes.js';
+import productRoutes from './routes/productRoutes.js';
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
 
-
-//configure env
+// Configure env
 dotenv.config();
 
-//db config
+// Database config
 connectDB();
 
-//esmodule fix
+// ESM module fix
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-//rest object
-const app = Express();
+// REST object
+const app = express();
 
-//middlewares
+// Middlewares
 app.use(cors());
-app.use(Express.json());
+app.use(express.json());
 app.use(morgan('dev'));
-app.use(Express.static(path.join(__dirname, 'client/build')))
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-//rest api
+// REST API
 app.use('*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'client/build/index.html'))
-})
+    res.sendFile(path.join(__dirname, 'client/build/index.html'));
+});
 
-//routes
+// Routes
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/category', categoryRoutes);
 app.use('/api/v1/product', productRoutes);
 
-//port
+// Port
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
     console.log(`Server running on ${PORT}`);
-})
+});
