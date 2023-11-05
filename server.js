@@ -8,14 +8,7 @@ import productRoutes from "./routes/productRoutes.js"
 import cors from 'cors';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
-import fs from 'fs';
 
-const indexPath = path.join(__dirname, './client/build/index.html');
-if (fs.existsSync(indexPath)) {
-  console.log('index.html exists:', indexPath);
-} else {
-  console.error('index.html does not exist:', indexPath);
-}
 
 //configure env
 dotenv.config();
